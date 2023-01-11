@@ -22,6 +22,60 @@
         background-color: tomato;
         border-radius: 8px;
       }
+      .navbar-toggler {
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+      }
+      .toggle-btn {
+        height: 3px;
+        width: 28px;
+        background-color: rgb(231, 195, 33);
+        position: relative;
+        transition: all 0.3s ease-in-out;
+      }
+      .toggle-btn:before {
+        content: "";
+        height: 3px;
+        width: 28px;
+        box-shadow: 0 -10px 0 0 rgb(231, 195, 33);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.3s ease-in-out;
+      }
+      .toggle-btn:after {
+        content: "";
+        height: 3px;
+        width: 28px;
+        box-shadow: 0 10px 0 0 rgb(231, 195, 33);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .active .toggle-btn {
+        background-color: transparent;
+        transition: all 0.2s ease-in-out;
+      }
+      .active .toggle-btn:before {
+        top: 0;
+        transition: all 0.3s ease-in-out;
+      }
+      .active .toggle-btn:after {
+        top: 0;
+        transition: all 0.3s ease-in-out;
+      }
+      .active .type1:before {
+        left: 6px;
+        transform: translateY(6px) rotate(-45deg);
+      }
+      .active .type1:after {
+        top: 0;
+        left: 6px;
+        transform: translateY(-8px) rotate(45deg);
+      }
     </style>
   </head>
   <body>
@@ -33,8 +87,9 @@
         <a class="navbar-brand" href="#"
           ><i class="fas fa-child fa-2x text-warning bg-dark"></i
         ></a>
+
         <button
-          class="navbar-toggler bg-light"
+          class="navbar-toggler "
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -42,7 +97,8 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <div class="toggle-btn type1"></div>
+          <!-- <span class="navbar-toggler-icon"></span> -->
         </button>
 
         <div
@@ -88,7 +144,7 @@
             <li class="nav-item">
               <a
                 class="nav-link text-light text-uppercase font-weight-bold px-3"
-                href="#"
+                href="#contact"
                 >Contacts</a
               >
             </li>
@@ -498,6 +554,14 @@
       </div>
     </footer>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(document).on("click", ".navbar-toggler", function () {
+          $(this).toggleClass("active");
+        });
+      });
+    </script>
     <script
       src="https://kit.fontawesome.com/61fe4c242a.js"
       crossorigin="anonymous"
